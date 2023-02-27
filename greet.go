@@ -30,3 +30,19 @@ func randomFormat() string {
 
 	return predefinedMessages[rand.Intn(len(predefinedMessages))]
 }
+
+func Hellos(names []string) (map[string]string, error) {
+	messages := make(map[string]string) //make a map of messages --> map[name] = message
+
+	for _, name := range names {
+		message, err := SayHi(name)
+
+		if err != nil {
+			return nil, err
+		}
+
+		messages[name] = message
+	}
+
+	return messages, nil
+}
